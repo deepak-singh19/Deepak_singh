@@ -1,0 +1,6 @@
+phone, email, firstname, lastname, role, username, isActive, _created_at, _uploaded_at
+8081233, deepa@gmail.com, Deepak, Singh, 12, Deep12, TRUE, 120122019, 12343212
+8081222, suppu@gmail.com, Suparna, Arora, 12, Suppu12, False, 120222019, 12343452
+8081123, Bala@gmail.com, Bala, Vishal, 1, Bala12, TRUE, 1208902019, 178643212
+80816753, Astha@gmail.com, Astha, Sharma, 12, Astha12, TRUE, 120874019, 345043212
+8081234, Dhruv@gmail.com, Dhruv, Bhatia, 12, Deep12, TRUE, 1201087777, 12257212

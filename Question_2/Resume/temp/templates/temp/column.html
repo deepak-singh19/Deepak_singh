@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <style>
+        .container {
+            overflow: hidden
+        }
+
+        .tab {
+            float: left
+        }
+
+        .tab-btn {
+            margin: 50px;
+        }
+
+        button {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        tr {
+            transition: all .25s ease-in-out
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Text Processing</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:rgb(0, 0, 0)">
+        <a class="navbar-brand" ><b>1 UPLOAD CSV</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" style="background-color:rgb(120, 120, 120)"><b>2 COLUMN HANDLING</b></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+       
+            {% csrf_token %}
+            <div class="tab">
+                <table id="table1" border="1">
+                    <tbody>
+                        <tr>
+                            <th>Fields</th>
+                            <th>Select</th>
+                        </tr>
+                        <tr>
+                            <td>iD</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+                            <td>phones</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+                            <td>email</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+                            <td>firstname</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+                            <td>lastname</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+
+                            <td>role</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+                            <td>username</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+
+                            <td>isActive</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+                            <td>_created_at</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                        <tr>
+                            <td>_updated_at</td>
+                            <td><input type="checkbox" name="check-tab1"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab tab-btn">
+                <button onclick="tab1_To_tab2();">&gt;&gt;&gt;&gt;&gt;</button>
+                <button onclick="tab2_To_tab1();">&lt;&lt;&lt;&lt;&lt;</button>
+            </div>
+
+            <div class="tab">
+                <table id="table2" border="1">
+                    <tbody>
+                        <tr>
+
+                            <th>Fields</th>
+                            <th>Select</th>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+
+
+            <a class="btn btn-primary" href="http://127.0.0.1:8000/" role="button">Back</a>
+            <a lass="btn btn-primary"href="http://127.0.0.1:8000/admin/temp/deepak/" role="button">Next</a>
+            <button type="button" class="btn btn-success">Skip this step</button>
+            <a lass="btn btn-primary" href="http://127.0.0.1:8000/" role="button">Cancel</a>
+        
+    </div>
+
+
+
+    <script>
+
+        function tab1_To_tab2() {
+            var table1 = document.getElementById("table1"),
+                table2 = document.getElementById("table2"),
+                checkboxes = document.getElementsByName("check-tab1");
+            console.log("Val1 = " + checkboxes.length);
+            for (var i = 0; i < checkboxes.length; i++)
+                if (checkboxes[i].checked) {
+
+                    var newRow = table2.insertRow(table2.length),
+                        cell1 = newRow.insertCell(0),
+
+                        cell4 = newRow.insertCell(1);
+
+                    cell1.innerHTML = table1.rows[i + 1].cells[0].innerHTML;
+
+                    cell4.innerHTML = "<input type='checkbox' name='check-tab2'>";
+
+
+
+                    console.log(checkboxes.length);
+                }
+        }
+
+
+        function tab2_To_tab1() {
+            var table1 = document.getElementById("table1"),
+                table2 = document.getElementById("table2"),
+                checkboxes = document.getElementsByName("check-tab2");
+            console.log("Val1 = " + checkboxes.length);
+            for (var i = 0; i < checkboxes.length; i++)
+                if (checkboxes[i].checked) {
+
+                    var index = table2.rows[i + 1].rowIndex;
+                    table2.deleteRow(index);
+
+                    i--;
+                    console.log(checkboxes.length);
+                }
+        }
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
